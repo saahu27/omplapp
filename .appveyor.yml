@@ -25,28 +25,28 @@ cache:
 configuration: Release
 
 before_build:
-  # Check if vcpkg exists; if not, clone it
+  # Ensure vcpkg is up-to-date
   - cmd: if not exist C:\tools\vcpkg ( git clone https://github.com/microsoft/vcpkg.git C:\tools\vcpkg )
   - cmd: cd C:\tools\vcpkg && git pull
   - cmd: cd C:\tools\vcpkg && bootstrap-vcpkg.bat
   - cmd: vcpkg update
   - cmd: vcpkg upgrade --no-dry-run
 
-  # Install required dependencies
-  - cmd: for /l %i in (1,1,3) do vcpkg install boost-filesystem[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install boost-program-options[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install boost-serialization[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install boost-system[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install boost-test[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install boost-ublas[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install boost-math[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install eigen3[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install fcl[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install assimp[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install octomap[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install triangle[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install ccd[core]:x64-windows && if %errorlevel% == 0 exit /b 0
-  - cmd: for /l %i in (1,1,3) do vcpkg install pygccxml[core]:x64-windows && if %errorlevel% == 0 exit /b 0
+  # Install required dependencies with retries (fixing the for loop issue)
+  - cmd: vcpkg install boost-filesystem[core]:x64-windows || vcpkg install boost-filesystem[core]:x64-windows || vcpkg install boost-filesystem[core]:x64-windows
+  - cmd: vcpkg install boost-program-options[core]:x64-windows || vcpkg install boost-program-options[core]:x64-windows || vcpkg install boost-program-options[core]:x64-windows
+  - cmd: vcpkg install boost-serialization[core]:x64-windows || vcpkg install boost-serialization[core]:x64-windows || vcpkg install boost-serialization[core]:x64-windows
+  - cmd: vcpkg install boost-system[core]:x64-windows || vcpkg install boost-system[core]:x64-windows || vcpkg install boost-system[core]:x64-windows
+  - cmd: vcpkg install boost-test[core]:x64-windows || vcpkg install boost-test[core]:x64-windows || vcpkg install boost-test[core]:x64-windows
+  - cmd: vcpkg install boost-ublas[core]:x64-windows || vcpkg install boost-ublas[core]:x64-windows || vcpkg install boost-ublas[core]:x64-windows
+  - cmd: vcpkg install boost-math[core]:x64-windows || vcpkg install boost-math[core]:x64-windows || vcpkg install boost-math[core]:x64-windows
+  - cmd: vcpkg install eigen3[core]:x64-windows || vcpkg install eigen3[core]:x64-windows || vcpkg install eigen3[core]:x64-windows
+  - cmd: vcpkg install fcl[core]:x64-windows || vcpkg install fcl[core]:x64-windows || vcpkg install fcl[core]:x64-windows
+  - cmd: vcpkg install assimp[core]:x64-windows || vcpkg install assimp[core]:x64-windows || vcpkg install assimp[core]:x64-windows
+  - cmd: vcpkg install octomap[core]:x64-windows || vcpkg install octomap[core]:x64-windows || vcpkg install octomap[core]:x64-windows
+  - cmd: vcpkg install triangle[core]:x64-windows || vcpkg install triangle[core]:x64-windows || vcpkg install triangle[core]:x64-windows
+  - cmd: vcpkg install ccd[core]:x64-windows || vcpkg install ccd[core]:x64-windows || vcpkg install ccd[core]:x64-windows
+  - cmd: vcpkg install pygccxml[core]:x64-windows || vcpkg install pygccxml[core]:x64-windows || vcpkg install pygccxml[core]:x64-windows
 
   # Install Python dependencies for OMPL
   - cmd: python -m pip install --upgrade pip
