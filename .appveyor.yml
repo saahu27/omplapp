@@ -25,8 +25,8 @@ cache:
 configuration: Release
 
 before_build:
-  # Ensure vcpkg is updated to the latest version
-  - cmd: git clone https://github.com/microsoft/vcpkg.git C:\tools\vcpkg
+  # Check if vcpkg exists; if not, clone it
+  - cmd: if not exist C:\tools\vcpkg ( git clone https://github.com/microsoft/vcpkg.git C:\tools\vcpkg )
   - cmd: cd C:\tools\vcpkg && git pull
   - cmd: cd C:\tools\vcpkg && bootstrap-vcpkg.bat
   - cmd: vcpkg update
