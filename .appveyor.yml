@@ -46,8 +46,6 @@ before_build:
   - cmd: vcpkg install octomap[core]:x64-windows || vcpkg install octomap[core]:x64-windows || vcpkg install octomap[core]:x64-windows
   - cmd: vcpkg install triangle[core]:x64-windows || vcpkg install triangle[core]:x64-windows || vcpkg install triangle[core]:x64-windows
   - cmd: vcpkg install ccd[core]:x64-windows || vcpkg install ccd[core]:x64-windows || vcpkg install ccd[core]:x64-windows
-  - cmd: vcpkg install pygccxml[core]:x64-windows || vcpkg install pygccxml[core]:x64-windows || vcpkg install pygccxml[core]:x64-windows
-
   # Install Python dependencies for OMPL
   - cmd: python -m pip install --upgrade pip
   - cmd: python -m pip install numpy flask celery pygccxml
