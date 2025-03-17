@@ -43,7 +43,7 @@ environment:
   VCPKG_ARCH: x64-windows
 
   CMAKE_PREFIX_PATH: C:\tools\vcpkg\installed\x64-windows
-  PATH: C:\msys64\mingw64\bin;%PATH%  # Ensures pkg-config is found
+  PATH: C:\Tools\pkg-config;%PATH%  # Add pkg-config to PATH
 
 cache:
   # Cache installed libraries to speed up subsequent builds
@@ -71,7 +71,6 @@ before_build:
   - cmd: vcpkg install opengl:%VCPKG_ARCH%
   # - cmd: vcpkg install pkg-config:%VCPKG_ARCH%
   # add any other libs you need here...
-  - cmd: pacman -S --noconfirm mingw-w64-x86_64-pkg-config
   # 3) Python dependencies
   - cmd: python -m pip install --upgrade pip
   - cmd: python -m pip install numpy flask celery pygccxml
