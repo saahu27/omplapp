@@ -68,14 +68,14 @@ before_build:
   # - cmd: python -m pip install numpy flask celery pygccxml
 
   # 4) Fetch OMPL submodule
-  - cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
+  # - cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
 
   # 2) Manually create a build folder inside ompl (NOT in the parent)
-  - cmd: cd C:\projects\omplapp\ompl && mkdir build
-  - cmd: cd C:\projects\omplapp\ompl\build && cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ^ -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ..
+  # - cmd: cd C:\projects\omplapp\ompl && mkdir build
+  # - cmd: cd C:\projects\omplapp\ompl\build && cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ^ -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ..
 
   #- cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
-  #- cmd: git submodule update --init --recursive
+  # - cmd: git submodule update --init --recursive
 
   # # 5) Create build directory and configure
   # - cmd: cd C:\projects\omplapp\ompl
@@ -96,8 +96,8 @@ before_build:
   #          C:\projects\omplapp\ompl
 
 build:
-  # project: C:\projects\omplapp\build\omplapp.sln
-  project: C:\projects\omplapp\ompl\build\ompl.sln
+  project: C:\projects\omplapp\build\omplapp.sln
+  # project: C:\projects\omplapp\ompl\build\ompl.sln
   parallel: true
 
 test_script:
