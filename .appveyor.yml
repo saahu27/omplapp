@@ -70,6 +70,30 @@ before_build:
   - cmd: python -m pip install --upgrade pip
   - cmd: python -m pip install numpy flask celery pygccxml
 
+  # 4) Update the OMPL submodule
+  - cmd: cd C:\projects\omplapp && git submodule update --init --recursive
+
+  # 5) Create build directory for OMPL
+  - cmd: mkdir C:\projects\omplapp\ompl\build
+  - cmd: cd C:\projects\omplapp\ompl\build
+  - cmd: cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% ^
+          -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ^
+          -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% ^
+          -DCMAKE_INSTALL_PREFIX=%CMAKE_INSTALL_PREFIX% ^
+          C:\projects\omplapp\ompl
+
+  # 6) Create build directory for OMPL.app
+  - cmd: mkdir C:\projects\omplapp\build
+  - cmd: cd C:\projects\omplapp\build
+  - cmd: cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% ^
+          -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ^
+          -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% ^
+          -DCMAKE_INSTALL_PREFIX=%CMAKE_INSTALL_PREFIX% ^
+          -DOMPL_REGISTRATION=%OMPL_REGISTRATION% ^
+          -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% ^
+          C:\projects\omplapp
+
+
   # 4) Fetch OMPL submodule
   # - cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
 
@@ -106,10 +130,10 @@ before_build:
   # - cmd: >
   #     mkdir C:\projects\omplapp\build && cd C:\projects\omplapp\build &&
   #     cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% -DOMPL_REGISTRATION=%OMPL_REGISTRATION% -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% C:\projects\omplapp
-  - cmd: >
-      mkdir C:\projects\omplapp\ompl && git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl &&
-      mkdir C:\projects\omplapp\ompl\build && cd C:\projects\omplapp\ompl\build &&
-      cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% -DOMPL_REGISTRATION=%OMPL_REGISTRATION% -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% C:\projects\omplapp\ompl
+  # - cmd: >
+  #    mkdir C:\projects\omplapp\ompl && git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl &&
+      # mkdir C:\projects\omplapp\ompl\build && cd C:\projects\omplapp\ompl\build &&
+      # cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% -DOMPL_REGISTRATION=%OMPL_REGISTRATION% -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% C:\projects\omplapp\ompl
 build:
   project: C:\projects\omplapp\build\omplapp.sln
   # project: C:\projects\omplapp\ompl\build\ompl.sln
