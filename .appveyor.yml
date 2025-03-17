@@ -88,7 +88,6 @@ before_build:
 
 build:
   project: C:\projects\omplapp\build\omplapp.sln
-  configuration: Release
   parallel: true
 
 test_script:
