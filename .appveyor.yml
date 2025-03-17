@@ -94,6 +94,17 @@ before_build:
   #          -DCMAKE_C_COMPILER=%CC% ^
   #          -DCMAKE_CXX_COMPILER=%CXX% ^
   #          C:\projects\omplapp\ompl
+  # - cmd: mkdir C:\projects\omplapp\build
+  - cmd: mkdir build
+  - cmd: cd build
+  - cmd: cd C:\projects\omplapp\build ^
+         && cmake %CMAKE_GENERATOR% %CMAKE_GENERATOR_PLATFORM% ^
+         -DCMAKE_BUILD_TYPE=%configuration% ^
+         -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ^
+         -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% ^
+         -DOMPL_REGISTRATION=%OMPL_REGISTRATION% ^
+         -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% ^
+         C:\projects\omplapp
 
 build:
   project: C:\projects\omplapp\build\omplapp.sln
