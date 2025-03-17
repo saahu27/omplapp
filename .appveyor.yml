@@ -42,6 +42,9 @@ environment:
   # vcpkg triplet for x64-windows
   VCPKG_ARCH: x64-windows
 
+  CMAKE_PREFIX_PATH: C:\tools\vcpkg\installed\x64-windows
+  PATH: C:\msys64\mingw64\bin;%PATH%  # Ensures pkg-config is found
+
 cache:
   # Cache installed libraries to speed up subsequent builds
   - C:\tools\vcpkg\installed -> .appveyor.yml
@@ -66,9 +69,9 @@ before_build:
   - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
   - cmd: vcpkg install assimp:%VCPKG_ARCH%
   - cmd: vcpkg install opengl:%VCPKG_ARCH%
-  - cmd: vcpkg install pkg-config:%VCPKG_ARCH%
+  # - cmd: vcpkg install pkg-config:%VCPKG_ARCH%
   # add any other libs you need here...
-
+  - cmd: pacman -S --noconfirm mingw-w64-x86_64-pkg-config
   # 3) Python dependencies
   - cmd: python -m pip install --upgrade pip
   - cmd: python -m pip install numpy flask celery pygccxml
