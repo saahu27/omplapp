@@ -74,7 +74,8 @@ before_build:
   # 3) Python dependencies
   - cmd: python -m pip install --upgrade pip
   - cmd: python -m pip install numpy flask celery pygccxml
-  - cmd: python -m pip install distutils pyplusplus PyQt5 PyOpenGL
+  - cmd: python -m pip install --upgrade setuptools pyplusplus PyQt5 PyOpenGL
+
 
   # 4) Update the OMPL submodule
   - cmd: cd C:\projects\omplapp && git submodule update --init --recursive
