@@ -96,16 +96,10 @@ before_build:
   #          C:\projects\omplapp\ompl
   # - cmd: mkdir C:\projects\omplapp\build
   - cmd: >
-      REM Ensure that C:\projects\omplapp actually has your code/CMakeLists.txt!
-      mkdir C:\projects\omplapp\build
-      && cd C:\projects\omplapp\build
-      && cmake %CMAKE_GENERATOR% %CMAKE_GENERATOR_PLATFORM%
-         -DCMAKE_BUILD_TYPE=%configuration%
-         -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE%
-         -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD%
-         -DOMPL_REGISTRATION=%OMPL_REGISTRATION%
-         -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS%
-         C:\projects\omplapp
+    REM Ensure that C:\projects\omplapp actually has your code/CMakeLists.txt!
+    mkdir C:\projects\omplapp\build
+    && cd C:\projects\omplapp\build
+    && cmake ...
 
 build:
   project: C:\projects\omplapp\build\omplapp.sln
