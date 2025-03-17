@@ -5,6 +5,11 @@ platform: x64
 # Adjust the config as needed (e.g., Release, Debug, etc.)
 configuration: Release
 
+clone_folder: C:\projects\omplapp
+shallow_clone: true
+
+platform: x64
+
 # Environment variables to help mimic your GitHub Actions build
 environment:
   CTEST_OUTPUT_ON_FAILURE: 1
