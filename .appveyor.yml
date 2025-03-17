@@ -97,17 +97,14 @@ before_build:
   # - cmd: mkdir C:\projects\omplapp\build
   - cmd: >
       REM Ensure that C:\projects\omplapp actually has your code/CMakeLists.txt!
-      REM For example:
-      REM git clone https://github.com/ompl/omplapp.git C:\projects\omplapp
-
       mkdir C:\projects\omplapp\build
       && cd C:\projects\omplapp\build
-      && cmake %CMAKE_GENERATOR% %CMAKE_GENERATOR_PLATFORM% ^
-         -DCMAKE_BUILD_TYPE=%configuration% ^
-         -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ^
-         -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% ^
-         -DOMPL_REGISTRATION=%OMPL_REGISTRATION% ^
-         -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% ^
+      && cmake %CMAKE_GENERATOR% %CMAKE_GENERATOR_PLATFORM%
+         -DCMAKE_BUILD_TYPE=%configuration%
+         -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE%
+         -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD%
+         -DOMPL_REGISTRATION=%OMPL_REGISTRATION%
+         -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS%
          C:\projects\omplapp
 
 build:
