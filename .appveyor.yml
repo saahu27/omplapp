@@ -60,16 +60,39 @@ before_build:
   # - cmd: vcpkg install boost-test:%VCPKG_ARCH%           || vcpkg install boost-test:%VCPKG_ARCH%
   # - cmd: vcpkg install eigen3:%VCPKG_ARCH%               || vcpkg install eigen3:%VCPKG_ARCH%
   # - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
-  # add any other libs you need here...
+  # # add any other libs you need here...
 
-  # 3) Python dependencies
+  # # 3) Python dependencies
   # - cmd: python -m pip install --upgrade pip
   # - cmd: python -m pip install numpy flask celery pygccxml
 
+  # 4) Fetch OMPL submodule
   - cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
-  - cmd: mkdir C:\projects\omplapp\build
-  - cmd: cd C:\projects\omplapp\build && cmake %CMAKE_GENERATOR% -DCMAKE_BUILD_TYPE=%configuration% %CMAKE_TOOLCHAIN_FILE% -DOMPL_REGISTRATION=OFF ..
 
+  # 2) Manually create a build folder inside ompl (NOT in the parent)
+  - cmd: cd C:\projects\omplapp\ompl && mkdir build
+  - cmd: cd C:\projects\omplapp\ompl\build && cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ..
+
+  #- cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
+  #- cmd: git submodule update --init --recursive
+
+  # # 5) Create build directory and configure
+  # - cmd: cd C:\projects\omplapp\ompl
+  # - cmd: mkdir build
+  # - cmd: cd build
+  # # If you truly want clang in Visual Studio, you can add "-T ClangCL" below.
+  # - cmd: cmake %CMAKE_GENERATOR% %CMAKE_GENERATOR_PLATFORM% ^
+  #          -DCMAKE_BUILD_TYPE=%configuration% ^
+  #          %CMAKE_TOOLCHAIN_FILE% ^
+  #          -DOMPL_REGISTRATION=%OMPL_REGISTRATION% ^
+  #          -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% ^
+  #          -DMACHINE_SPEED_FACTOR=%MACHINE_SPEED_FACTOR% ^
+  #          -DCMAKE_INSTALL_PREFIX=%CMAKE_INSTALL_PREFIX% ^
+  #          -DOMPL_PYTHON_INSTALL_DIR=%OMPL_PYTHON_INSTALL_DIR% ^
+  #          -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% ^
+  #          -DCMAKE_C_COMPILER=%CC% ^
+  #          -DCMAKE_CXX_COMPILER=%CXX% ^
+  #          C:\projects\omplapp\ompl
 
 build:
   project: C:\projects\omplapp\build\omplapp.sln
