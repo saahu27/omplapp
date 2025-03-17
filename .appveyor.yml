@@ -56,7 +56,7 @@ before_build:
   - cmd: cd build
 
   # Configure with CMake (Enforce C++17)
-  - cmd: cmake %CMAKE_GENERATOR% -DCMAKE_BUILD_TYPE=%configuration% %CMAKE_TOOLCHAIN_FILE% -DOMPL_REGISTRATION=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..
+  - cmd: cmake %CMAKE_GENERATOR% -DCMAKE_BUILD_TYPE=%configuration% %CMAKE_TOOLCHAIN_FILE% -DOMPL_REGISTRATION=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ C:\projects\omplapp\ompl
 
 build:
   project: C:\projects\omplapp\build\omplapp.sln
