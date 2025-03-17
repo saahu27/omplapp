@@ -64,11 +64,16 @@ before_build:
   - cmd: vcpkg install boost-test:%VCPKG_ARCH%           || vcpkg install boost-test:%VCPKG_ARCH%
   - cmd: vcpkg install eigen3:%VCPKG_ARCH%               || vcpkg install eigen3:%VCPKG_ARCH%
   - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
+  - cmd: vcpkg install assimp:%VCPKG_ARCH%
+  - cmd: vcpkg install spot:%VCPKG_ARCH%
+  - cmd: vcpkg install opengl:%VCPKG_ARCH%
+  - cmd: vcpkg install pkg-config:%VCPKG_ARCH%
   # add any other libs you need here...
 
   # 3) Python dependencies
   - cmd: python -m pip install --upgrade pip
   - cmd: python -m pip install numpy flask celery pygccxml
+  - cmd: python -m pip install distutils pyplusplus PyQt5 PyOpenGL
 
   # 4) Update the OMPL submodule
   - cmd: cd C:\projects\omplapp && git submodule update --init --recursive
