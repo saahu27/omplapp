@@ -65,7 +65,6 @@ before_build:
   - cmd: vcpkg install eigen3:%VCPKG_ARCH%               || vcpkg install eigen3:%VCPKG_ARCH%
   - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
   - cmd: vcpkg install assimp:%VCPKG_ARCH%
-  - cmd: vcpkg install spot:%VCPKG_ARCH%
   - cmd: vcpkg install opengl:%VCPKG_ARCH%
   - cmd: vcpkg install pkg-config:%VCPKG_ARCH%
   # add any other libs you need here...
