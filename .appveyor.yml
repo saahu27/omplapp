@@ -51,21 +51,21 @@ before_build:
   - cmd: cd C:\tools\vcpkg && bootstrap-vcpkg.bat
 
   #2) Install the dependencies needed (like your GH workflow)
-  - cmd: vcpkg install boost-dynamic-bitset:%VCPKG_ARCH% || vcpkg install boost-dynamic-bitset:%VCPKG_ARCH%
-  - cmd: vcpkg install boost-filesystem:%VCPKG_ARCH%     || vcpkg install boost-filesystem:%VCPKG_ARCH%
-  - cmd: vcpkg install boost-graph:%VCPKG_ARCH%          || vcpkg install boost-graph:%VCPKG_ARCH%
-  - cmd: vcpkg install boost-odeint:%VCPKG_ARCH%         || vcpkg install boost-odeint:%VCPKG_ARCH%
-  - cmd: vcpkg install boost-program-options:%VCPKG_ARCH% || vcpkg install boost-program-options:%VCPKG_ARCH%
-  - cmd: vcpkg install boost-serialization:%VCPKG_ARCH%   || vcpkg install boost-serialization:%VCPKG_ARCH%
-  - cmd: vcpkg install boost-system:%VCPKG_ARCH%         || vcpkg install boost-system:%VCPKG_ARCH%
-  - cmd: vcpkg install boost-test:%VCPKG_ARCH%           || vcpkg install boost-test:%VCPKG_ARCH%
-  - cmd: vcpkg install eigen3:%VCPKG_ARCH%               || vcpkg install eigen3:%VCPKG_ARCH%
-  - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
-  # add any other libs you need here...
+  # - cmd: vcpkg install boost-dynamic-bitset:%VCPKG_ARCH% || vcpkg install boost-dynamic-bitset:%VCPKG_ARCH%
+  # - cmd: vcpkg install boost-filesystem:%VCPKG_ARCH%     || vcpkg install boost-filesystem:%VCPKG_ARCH%
+  # - cmd: vcpkg install boost-graph:%VCPKG_ARCH%          || vcpkg install boost-graph:%VCPKG_ARCH%
+  # - cmd: vcpkg install boost-odeint:%VCPKG_ARCH%         || vcpkg install boost-odeint:%VCPKG_ARCH%
+  # - cmd: vcpkg install boost-program-options:%VCPKG_ARCH% || vcpkg install boost-program-options:%VCPKG_ARCH%
+  # - cmd: vcpkg install boost-serialization:%VCPKG_ARCH%   || vcpkg install boost-serialization:%VCPKG_ARCH%
+  # - cmd: vcpkg install boost-system:%VCPKG_ARCH%         || vcpkg install boost-system:%VCPKG_ARCH%
+  # - cmd: vcpkg install boost-test:%VCPKG_ARCH%           || vcpkg install boost-test:%VCPKG_ARCH%
+  # - cmd: vcpkg install eigen3:%VCPKG_ARCH%               || vcpkg install eigen3:%VCPKG_ARCH%
+  # - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
+  # # add any other libs you need here...
 
-  # 3) Python dependencies
-  - cmd: python -m pip install --upgrade pip
-  - cmd: python -m pip install numpy flask celery pygccxml
+  # # 3) Python dependencies
+  # - cmd: python -m pip install --upgrade pip
+  # - cmd: python -m pip install numpy flask celery pygccxml
 
   # 4) Fetch OMPL submodule
   # - cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
