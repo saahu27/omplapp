@@ -99,6 +99,7 @@ before_build:
 
   # Now you can create C:\projects\omplapp\build since C:\projects\omplapp exists
   - cmd: >
+      git submodule update --init --recursive &&
       mkdir C:\projects\omplapp\build && cd C:\projects\omplapp\build &&
       cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% -DOMPL_REGISTRATION=%OMPL_REGISTRATION% -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% C:\projects\omplapp
  
