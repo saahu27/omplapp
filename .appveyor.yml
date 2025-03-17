@@ -100,7 +100,7 @@ before_build:
   # - cmd: mkdir C:\projects\omplapp\build
   # - cmd: git clone https://github.com/ompl/omplapp.git C:\projects\omplapp
   # - cmd: cd C:\projects\omplapp && git submodule update --init --recursive
-  - cmd: git submodule update --init --recursive
+  - cmd: cd C:\projects\omplapp && git submodule update --init --recursive
 
   # Now you can create C:\projects\omplapp\build since C:\projects\omplapp exists
   - cmd: >
