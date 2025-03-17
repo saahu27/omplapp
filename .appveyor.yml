@@ -96,7 +96,8 @@ before_build:
   #          C:\projects\omplapp\ompl
 
 build:
-  project: C:\projects\omplapp\build\omplapp.sln
+  # project: C:\projects\omplapp\build\omplapp.sln
+  project: C:\projects\omplapp\ompl\build\ompl.sln
   parallel: true
 
 test_script:
