@@ -98,14 +98,18 @@ before_build:
   #          -DCMAKE_CXX_COMPILER=%CXX% ^
   #          C:\projects\omplapp\ompl
   # - cmd: mkdir C:\projects\omplapp\build
-  - cmd: git clone https://github.com/ompl/omplapp.git C:\projects\omplapp
-  - cmd: cd C:\projects\omplapp && git submodule update --init --recursive
+  # - cmd: git clone https://github.com/ompl/omplapp.git C:\projects\omplapp
+  #- cmd: cd C:\projects\omplapp && git submodule update --init --recursive
+
 
   # Now you can create C:\projects\omplapp\build since C:\projects\omplapp exists
+  # - cmd: >
+  #     mkdir C:\projects\omplapp\build && cd C:\projects\omplapp\build &&
+  #     cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% -DOMPL_REGISTRATION=%OMPL_REGISTRATION% -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% C:\projects\omplapp
   - cmd: >
-      mkdir C:\projects\omplapp\build && cd C:\projects\omplapp\build &&
-      cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% -DOMPL_REGISTRATION=%OMPL_REGISTRATION% -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% C:\projects\omplapp
- 
+      mkdir C:\projects\omplapp\ompl && git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl &&
+      mkdir C:\projects\omplapp\ompl\build && cd C:\projects\omplapp\ompl\build &&
+      cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% -DOMPL_REGISTRATION=%OMPL_REGISTRATION% -DOMPL_BUILD_DEMOS=%OMPL_BUILD_DEMOS% C:\projects\omplapp\ompl
 build:
   project: C:\projects\omplapp\build\omplapp.sln
   # project: C:\projects\omplapp\ompl\build\ompl.sln
