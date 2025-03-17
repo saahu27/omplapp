@@ -57,40 +57,40 @@ before_build:
   - cmd: cd C:\tools\vcpkg && bootstrap-vcpkg.bat
 
   #2) Install the dependencies needed (like your GH workflow)
-  # - cmd: vcpkg install boost-dynamic-bitset:%VCPKG_ARCH% || vcpkg install boost-dynamic-bitset:%VCPKG_ARCH%
-  # - cmd: vcpkg install boost-filesystem:%VCPKG_ARCH%     || vcpkg install boost-filesystem:%VCPKG_ARCH%
-  # - cmd: vcpkg install boost-graph:%VCPKG_ARCH%          || vcpkg install boost-graph:%VCPKG_ARCH%
-  # - cmd: vcpkg install boost-odeint:%VCPKG_ARCH%         || vcpkg install boost-odeint:%VCPKG_ARCH%
-  # - cmd: vcpkg install boost-program-options:%VCPKG_ARCH% || vcpkg install boost-program-options:%VCPKG_ARCH%
-  # - cmd: vcpkg install boost-serialization:%VCPKG_ARCH%   || vcpkg install boost-serialization:%VCPKG_ARCH%
-  # - cmd: vcpkg install boost-system:%VCPKG_ARCH%         || vcpkg install boost-system:%VCPKG_ARCH%
-  # - cmd: vcpkg install boost-test:%VCPKG_ARCH%           || vcpkg install boost-test:%VCPKG_ARCH%
-  # - cmd: vcpkg install eigen3:%VCPKG_ARCH%               || vcpkg install eigen3:%VCPKG_ARCH%
-  # - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
-  # - cmd: vcpkg install assimp:%VCPKG_ARCH%
-  # - cmd: vcpkg install opengl:%VCPKG_ARCH%
-  # - cmd: vcpkg install fcl:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-dynamic-bitset:%VCPKG_ARCH% || vcpkg install boost-dynamic-bitset:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-filesystem:%VCPKG_ARCH%     || vcpkg install boost-filesystem:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-graph:%VCPKG_ARCH%          || vcpkg install boost-graph:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-odeint:%VCPKG_ARCH%         || vcpkg install boost-odeint:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-program-options:%VCPKG_ARCH% || vcpkg install boost-program-options:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-serialization:%VCPKG_ARCH%   || vcpkg install boost-serialization:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-system:%VCPKG_ARCH%         || vcpkg install boost-system:%VCPKG_ARCH%
+  - cmd: vcpkg install boost-test:%VCPKG_ARCH%           || vcpkg install boost-test:%VCPKG_ARCH%
+  - cmd: vcpkg install eigen3:%VCPKG_ARCH%               || vcpkg install eigen3:%VCPKG_ARCH%
+  - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
+  - cmd: vcpkg install assimp:%VCPKG_ARCH%
+  - cmd: vcpkg install opengl:%VCPKG_ARCH%
+  - cmd: vcpkg install fcl:%VCPKG_ARCH%
   - cmd: vcpkg install ccd:%VCPKG_ARCH%
   
   # - cmd: vcpkg install pkg-config:%VCPKG_ARCH%
   # add any other libs you need here...
   # 3) Python dependencies
-  # - cmd: python -m pip install --upgrade pip
-  # - cmd: python -m pip install numpy flask celery pygccxml
-  # - cmd: python -m pip install --upgrade setuptools pyplusplus PyQt5 PyOpenGL
+  - cmd: python -m pip install --upgrade pip
+  - cmd: python -m pip install numpy flask celery pygccxml
+  - cmd: python -m pip install --upgrade setuptools pyplusplus PyQt5 PyOpenGL
 
 
   # 4) Update the OMPL submodule
   - cmd: cd C:\projects\omplapp && git submodule update --init --recursive
 
   # 5) Create build directory for OMPL
-  # - cmd: mkdir C:\projects\omplapp\ompl\build
-  # - cmd: cd C:\projects\omplapp\ompl\build
-  # - cmd: cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% ^
-  #         -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ^
-  #         -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% ^
-  #         -DCMAKE_INSTALL_PREFIX=%CMAKE_INSTALL_PREFIX% ^
-  #         C:\projects\omplapp\ompl
+  - cmd: mkdir C:\projects\omplapp\ompl\build
+  - cmd: cd C:\projects\omplapp\ompl\build
+  - cmd: cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=%configuration% ^
+          -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ^
+          -DCMAKE_CXX_STANDARD=%CMAKE_CXX_STANDARD% ^
+          -DCMAKE_INSTALL_PREFIX=%CMAKE_INSTALL_PREFIX% ^
+          C:\projects\omplapp\ompl
 
   # 6) Create build directory for OMPL.app
   - cmd: mkdir C:\projects\omplapp\build
