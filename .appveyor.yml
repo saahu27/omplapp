@@ -69,6 +69,9 @@ before_build:
   - cmd: vcpkg install flann:%VCPKG_ARCH%                || vcpkg install flann:%VCPKG_ARCH%
   - cmd: vcpkg install assimp:%VCPKG_ARCH%
   - cmd: vcpkg install opengl:%VCPKG_ARCH%
+  - cmd: vcpkg install libccd:%VCPKG_ARCH% || vcpkg install libccd:%VCPKG_ARCH%
+  - cmd: vcpkg install fcl:%VCPKG_ARCH%
+  
   # - cmd: vcpkg install pkg-config:%VCPKG_ARCH%
   # add any other libs you need here...
   # 3) Python dependencies
