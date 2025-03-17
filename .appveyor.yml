@@ -11,7 +11,8 @@ environment:
 
   # Use the vcpkg toolchain file
   # (assuming vcpkg is installed in C:\tools\vcpkg)
-  CMAKE_TOOLCHAIN_FILE: -DCMAKE_TOOLCHAIN_FILE=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake
+  #CMAKE_TOOLCHAIN_FILE: -DCMAKE_TOOLCHAIN_FILE=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake
+  CMAKE_TOOLCHAIN_FILE: C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake
 
   # By default, Visual Studio 16 2019 is the generator
   CMAKE_GENERATOR: -G"Visual Studio 16 2019"
@@ -71,7 +72,7 @@ before_build:
 
   # 2) Manually create a build folder inside ompl (NOT in the parent)
   - cmd: cd C:\projects\omplapp\ompl && mkdir build
-  - cmd: cd C:\projects\omplapp\ompl\build && cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ..
+  - cmd: cd C:\projects\omplapp\ompl\build && cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ^ -DCMAKE_TOOLCHAIN_FILE=%CMAKE_TOOLCHAIN_FILE% ..
 
   #- cmd: git clone --depth=1 --branch=main https://github.com/ompl/ompl.git C:\projects\omplapp\ompl
   #- cmd: git submodule update --init --recursive
